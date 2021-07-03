@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'MysteryFont';
+  src: url("assets/mysteryFont2.ttf");
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'MysteryFont', serif;
+  color: aliceblue;
+  font-size: 26px;
+  text-align: center;
+}

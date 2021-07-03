@@ -1,0 +1,5 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label for="email">Type e-mail to continue</label>
+  <input id="email" type="email" formControlName="email">
+  <button type="submit" [disabled]="!loginForm.valid"> Submit </button>
+</form>

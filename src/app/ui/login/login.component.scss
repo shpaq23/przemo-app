@@ -1,0 +1,19 @@
+:host {
+  input {
+    border-radius: 20px;
+    border: 1px solid rgba(240,248,255,.51);
+    box-sizing: border-box;
+    outline: 0;
+    padding: 4px 8px;
+    font-family: inherit;
+    background-color: rgba(0,0,0,.1);
+    color: rgba(240,248,255,.91);
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    z-index: 10;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
