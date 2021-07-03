@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BackgroundComponent } from './ui/background/background.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionComponent } from './ui/quiz/question/question.component';
+import { SummaryComponent } from './ui/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { QuestionComponent } from './ui/quiz/question/question.component';
     QuizComponent,
     LoginComponent,
     BackgroundComponent,
-    QuestionComponent
+    QuestionComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

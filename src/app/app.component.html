@@ -1,5 +1,6 @@
 <app-background></app-background>
 <div class="content">
-  <app-login *ngIf="!logged" (logged)="onLogin()"></app-login>
-  <app-quiz *ngIf="logged"></app-quiz>
+  <app-login *ngIf="!logged && !summary" (logged)="onLogin()"></app-login>
+  <app-quiz *ngIf="logged && !summary" (summary)="onSubmit($event)"></app-quiz>
+  <app-summary *ngIf="summary && logged" [summary]="summary"></app-summary>
 </div>

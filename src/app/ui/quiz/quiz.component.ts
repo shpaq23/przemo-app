@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { QuizHttpResource } from 'src/app/infrastructure/quiz/quiz.http.resource';
 import { Question } from 'src/app/domain/Question';
 import { UserStorage } from 'src/app/api/user.storage';
 import { User } from 'src/app/domain/User';
 import { UserAnswer } from 'src/app/infrastructure/quiz/answer.request';
+import { Summary } from 'src/app/domain/Summary';
 
 @Component({
   selector: 'app-quiz',
@@ -12,6 +13,10 @@ import { UserAnswer } from 'src/app/infrastructure/quiz/answer.request';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuizComponent implements OnInit {
+
+  @Output()
+  summary = new EventEmitter<Summary>();
+
 
   questions: Array<Question> = [];
 
@@ -57,7 +62,10 @@ export class QuizComponent implements OnInit {
       questionId: question.getId(),
       answerId: question.getSelectedAnswer()?.getId()
     }));
-    this.quizHttpResource.setAnswers({ userId, userAnswers }).subscribe();
+    this.quizHttpResource.getSummary({ userId, userAnswers })
+        .subscribe(summary => {
+          this.summary.emit(summary);
+        });
   }
 
   private setIsPreviousQuestionAvailable(): void {

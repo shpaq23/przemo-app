@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { QuestionDto } from 'src/app/infrastructure/quiz/question.dto';
 import { map } from 'rxjs/operators';
 import { AnswerRequest } from 'src/app/infrastructure/quiz/answer.request';
+import { Summary } from 'src/app/domain/Summary';
+import { SummaryDto } from 'src/app/infrastructure/quiz/summary.dto';
 
 @Injectable(
   { providedIn: 'root' }
@@ -23,8 +25,10 @@ export class QuizHttpResource {
                );
   }
 
-  setAnswers(answers: AnswerRequest): Observable<null> {
-    return this.httpClient.post(this.url + 'answer', answers).pipe(map(() => null));
+  getSummary(answers: AnswerRequest): Observable<Summary> {
+    return this.httpClient.post<SummaryDto>(this.url + 'answer', answers).pipe(
+      map((dto) => Summary.fromDTO(dto))
+    );
   }
 
 
