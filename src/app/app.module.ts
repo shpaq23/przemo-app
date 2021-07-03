@@ -8,13 +8,15 @@ import { LoginComponent } from './ui/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BackgroundComponent } from './ui/background/background.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QuestionComponent } from './ui/quiz/question/question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
     LoginComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

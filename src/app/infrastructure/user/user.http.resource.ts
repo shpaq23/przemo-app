@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from 'src/app/domain/User';
 import { UserDto } from 'src/app/infrastructure/user/user.dto';
 import { UserRequest } from 'src/app/infrastructure/user/user.request';
@@ -17,8 +17,10 @@ export class UserHttpResource {
   }
 
   login(request: UserRequest): Observable<User> {
-    return this.httpClient.post<UserDto>(this.url, request).pipe(
-      map(dto => new User(dto.id, request.email))
-    );
+    // return this.httpClient.post<UserDto>(this.url, request).pipe(
+    //   map(dto => new User(dto.id, request.email))
+    // );
+
+    return of(new User(1, 'shpaq23@gmail.com'));
   }
 }

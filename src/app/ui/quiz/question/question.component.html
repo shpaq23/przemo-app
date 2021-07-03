@@ -1,0 +1,9 @@
+<ng-container *ngIf="question">
+  <p class="question">Question: {{index + 1}}</p>
+  <p class="question">{{question.getContent()}}</p>
+  <div class="answers">
+    <p class="answer" *ngFor="let answer of question.getAnswers()">
+      <span class="option">-</span> {{answer.getContent()}}
+    </p>
+  </div>
+</ng-container>

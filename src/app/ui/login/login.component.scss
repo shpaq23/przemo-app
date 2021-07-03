@@ -1,19 +1,31 @@
 :host {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
   input {
     border-radius: 20px;
-    border: 1px solid rgba(240,248,255,.51);
+    border: 1px solid rgba(240, 248, 255, .51);
     box-sizing: border-box;
     outline: 0;
     padding: 4px 8px;
     font-family: inherit;
-    background-color: rgba(0,0,0,.1);
-    color: rgba(240,248,255,.91);
-    font-size: 20px;
+    background-color: rgba(0, 0, 0, .1);
+    color: rgba(240, 248, 255, .91);
+    font-size: 16px;
     text-align: center;
-    width: 100%;
-    max-width: 200px;
     z-index: 10;
     text-transform: uppercase;
     font-weight: 700;
+    margin-top: 60px;
+    margin-bottom: 12px;
   }
+
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+
+  logged: boolean = false;
+
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
+  }
+
+  onLogin(): void {
+    this.logged = true;
+    this.changeDetectorRef.detectChanges();
+  }
 
 }

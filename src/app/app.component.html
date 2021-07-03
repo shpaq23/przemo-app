@@ -1,5 +1,5 @@
 <app-background></app-background>
 <div class="content">
-  <app-login></app-login>
-  <app-quiz></app-quiz>
+  <app-login *ngIf="!logged" (logged)="onLogin()"></app-login>
+  <app-quiz *ngIf="logged"></app-quiz>
 </div>

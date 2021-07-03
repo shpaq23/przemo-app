@@ -14,6 +14,48 @@ body {
   font-weight: 700;
   font-family: 'MysteryFont', serif;
   color: aliceblue;
-  font-size: 26px;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid rgba(240, 248, 255, .51);
+  box-sizing: border-box;
+  padding: 4px 8px;
+  font-family: inherit;
+  background-color: rgba(0, 0, 0, .1);
+  color: rgba(240, 248, 255, .91);
+  font-size: 16px;
   text-align: center;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:enabled {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, .3);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 }

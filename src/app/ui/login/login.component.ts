@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   @Output()
   logged = new EventEmitter<boolean>();
@@ -22,10 +22,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private readonly userHttpResource: UserHttpResource,
               private readonly userStorage: UserStorage) {
-  }
-
-  ngOnInit(): void {
-
   }
 
   login(): void {
