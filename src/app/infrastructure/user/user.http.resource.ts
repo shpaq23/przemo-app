@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserHttpResource {
 
-  private readonly url: string = 'http://localhost:8080'
+  private readonly url: string = 'http://localhost:8080/user'
 
   constructor(private readonly httpClient: HttpClient) {
   }
