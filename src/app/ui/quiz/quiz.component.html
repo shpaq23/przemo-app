@@ -1,8 +1,9 @@
 <p>Answering as: {{user.getEmail()}}</p>
 <div class="container">
-  <app-question [question]="questions[actualQuestionIndex]" [index]="actualQuestionIndex"></app-question>
+  <app-question [question]="questions[actualQuestionIndex]" [questionIndex]="actualQuestionIndex"></app-question>
 </div>
 <div class="btn-group">
   <button (click)="previousQuestion()" [disabled]="!isPreviousQuestionAvailable">Previous Question</button>
   <button (click)="nextQuestion()" [disabled]="!isNextQuestionAvailable">Next Question</button>
 </div>
+  <button class="submit" (click)="submit()"> Submit </button>

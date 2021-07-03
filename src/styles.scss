@@ -39,23 +39,20 @@ button {
     background-color: rgba(0, 0, 0, .3);
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
+}
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 248, 255, 0.95);
+  border-radius: 10px;
 }

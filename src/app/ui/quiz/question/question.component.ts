@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Question } from 'src/app/domain/Question';
+import { Answer } from 'src/app/domain/Answer';
 
 @Component({
   selector: 'app-question',
@@ -13,11 +14,16 @@ export class QuestionComponent implements OnInit {
   question: Question;
 
   @Input()
-  index: number;
+  questionIndex: number;
 
-  constructor() { }
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+  }
+
+  answerQuestion(answer: Answer): void {
+    this.question.setSelectedAnswer(answer);
+    this.changeDetectorRef.detectChanges();
   }
 
 }

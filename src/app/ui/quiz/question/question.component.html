@@ -1,9 +1,15 @@
 <ng-container *ngIf="question">
-  <p class="question">Question: {{index + 1}}</p>
+  <p class="question">Question: {{questionIndex + 1}}</p>
   <p class="question">{{question.getContent()}}</p>
   <div class="answers">
-    <p class="answer" *ngFor="let answer of question.getAnswers()">
-      <span class="option">-</span> {{answer.getContent()}}
-    </p>
+    <ul>
+      <li *ngFor="let answer of question.getAnswers()">
+        <span class="answer"
+              (click)="answerQuestion(answer)"
+              [class.underline]="question.getSelectedAnswer()?.getId() === answer.getId()">
+          {{answer.getContent()}}
+        </span>
+      </li>
+    </ul>
   </div>
 </ng-container>

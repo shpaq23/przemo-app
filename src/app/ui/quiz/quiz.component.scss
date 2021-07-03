@@ -9,7 +9,7 @@
     flex-direction: column;
   }
   .btn-group {
-    margin-top: 30px;
+    margin-top: 20px;
     button {
       margin: 0 6px;
     }
@@ -18,5 +18,10 @@
   app-question {
     height: 400px;
     overflow-x: auto;
+  }
+
+  .submit {
+    width: 200px;
+    margin-top: 10px;
   }
 }

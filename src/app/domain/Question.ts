@@ -3,6 +3,8 @@ import { Answer } from 'src/app/domain/Answer';
 
 export class Question {
 
+  private selectedAnswer: Answer;
+
   constructor(private readonly id: number,
               private readonly content: string,
               private readonly answers: Array<Answer>) {
@@ -24,6 +26,14 @@ export class Question {
 
   getAnswers(): Array<Answer> {
     return this.answers;
+  }
+
+  getSelectedAnswer(): Answer {
+    return this.selectedAnswer;
+  }
+
+  setSelectedAnswer(answer: Answer): void {
+    this.selectedAnswer = answer;
   }
 
 }

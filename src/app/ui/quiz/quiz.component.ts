@@ -3,6 +3,7 @@ import { QuizHttpResource } from 'src/app/infrastructure/quiz/quiz.http.resource
 import { Question } from 'src/app/domain/Question';
 import { UserStorage } from 'src/app/api/user.storage';
 import { User } from 'src/app/domain/User';
+import { AnswerRequest } from 'src/app/infrastructure/quiz/answer.request';
 
 @Component({
   selector: 'app-quiz',
@@ -45,8 +46,23 @@ export class QuizComponent implements OnInit {
       this.actualQuestionIndex--;
     }
     this.setIsPreviousQuestionAvailable();
-    this.setIsNextQuestionAvailable()
+    this.setIsNextQuestionAvailable();
     this.changeDetectorRef.detectChanges();
+  }
+
+  submit(): void {
+    const request: Array<AnswerRequest> = this.questions.map(question => {
+      const request: AnswerRequest = {
+        userId: this.user.getId(),
+        questionId: question.getId()
+      };
+
+      if (question.getSelectedAnswer()) {
+        request.answerId = question.getSelectedAnswer().getId();
+      }
+      return request;
+    });
+    this.quizHttpResource.setAnswers(request);
   }
 
   private setIsPreviousQuestionAvailable(): void {
