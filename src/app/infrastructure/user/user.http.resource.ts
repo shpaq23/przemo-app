@@ -11,16 +11,14 @@ import { map } from 'rxjs/operators';
 })
 export class UserHttpResource {
 
-  private readonly url: string = 'loclahost:8080/fakeurl'
+  private readonly url: string = 'http://localhost:8080'
 
   constructor(private readonly httpClient: HttpClient) {
   }
 
   login(request: UserRequest): Observable<User> {
-    // return this.httpClient.post<UserDto>(this.url, request).pipe(
-    //   map(dto => new User(dto.id, request.email))
-    // );
-
-    return of(new User(1, 'shpaq23@gmail.com'));
+    return this.httpClient.post<UserDto>(this.url, request).pipe(
+      map(dto => new User(dto.id, request.email))
+    );
   }
 }

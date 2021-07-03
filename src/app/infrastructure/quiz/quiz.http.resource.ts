@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from 'src/app/domain/Question';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { QuestionDto } from 'src/app/infrastructure/quiz/question.dto';
 import { map } from 'rxjs/operators';
-import { Answer } from 'src/app/domain/Answer';
 import { AnswerRequest } from 'src/app/infrastructure/quiz/answer.request';
 
 @Injectable(
@@ -12,28 +11,21 @@ import { AnswerRequest } from 'src/app/infrastructure/quiz/answer.request';
 )
 export class QuizHttpResource {
 
-  private readonly url: string = 'localhost:8080/sample-server/url';
+  private readonly url: string = 'http://localhost:8080/question/';
 
   constructor(private readonly httpClient: HttpClient) {
   }
 
   getQuestions(): Observable<Array<Question>> {
-    // uncomment if you want to use rly API
-    // return this.httpClient.get<Array<QuestionDto>>(this.url)
-    //   .pipe(
-    //     map(dtos => dtos.map(dto => Question.fromDTO(dto)))
-    //   );
-
-    return of(mockDto)
-      .pipe(
-        map(dtos => dtos.map(dto => Question.fromDTO(dto)))
-      );
+    return this.httpClient.get<Array<QuestionDto>>(this.url)
+               .pipe(
+                 map(dtos => dtos.map(dto => Question.fromDTO(dto)))
+               );
   }
 
-  setAnswers(answers: Array<AnswerRequest>): Observable<null> {
-    return this.httpClient.post(this.url, answers).pipe(map(() => null));
+  setAnswers(answers: AnswerRequest): Observable<null> {
+    return this.httpClient.post(this.url + 'answer', answers).pipe(map(() => null));
   }
-
 
 
 }

@@ -3,7 +3,7 @@ import { QuizHttpResource } from 'src/app/infrastructure/quiz/quiz.http.resource
 import { Question } from 'src/app/domain/Question';
 import { UserStorage } from 'src/app/api/user.storage';
 import { User } from 'src/app/domain/User';
-import { AnswerRequest } from 'src/app/infrastructure/quiz/answer.request';
+import { UserAnswer } from 'src/app/infrastructure/quiz/answer.request';
 
 @Component({
   selector: 'app-quiz',
@@ -51,18 +51,13 @@ export class QuizComponent implements OnInit {
   }
 
   submit(): void {
-    const request: Array<AnswerRequest> = this.questions.map(question => {
-      const request: AnswerRequest = {
-        userId: this.user.getId(),
-        questionId: question.getId()
-      };
+    const userId = this.user.getId();
 
-      if (question.getSelectedAnswer()) {
-        request.answerId = question.getSelectedAnswer().getId();
-      }
-      return request;
-    });
-    this.quizHttpResource.setAnswers(request);
+    const userAnswers: Array<UserAnswer> = this.questions.map(question => ({
+      questionId: question.getId(),
+      answerId: question.getSelectedAnswer().getId()
+    }));
+    this.quizHttpResource.setAnswers({ userId, userAnswers }).subscribe();
   }
 
   private setIsPreviousQuestionAvailable(): void {
