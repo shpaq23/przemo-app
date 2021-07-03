@@ -55,7 +55,7 @@ export class QuizComponent implements OnInit {
 
     const userAnswers: Array<UserAnswer> = this.questions.map(question => ({
       questionId: question.getId(),
-      answerId: question.getSelectedAnswer().getId()
+      answerId: question.getSelectedAnswer()?.getId()
     }));
     this.quizHttpResource.setAnswers({ userId, userAnswers }).subscribe();
   }
